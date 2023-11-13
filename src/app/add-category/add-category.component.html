@@ -1,0 +1,28 @@
+<div class="container">
+  <form #form="ngForm" (ngSubmit)="addEmployee()" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="name" class="form-label">Tên Danh Mục</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        name="name"
+        [(ngModel)]="addCategoryrequest.name"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="categoryImageView" class="form-label">Ảnh Danh Mục</label>
+      <input
+        type="file"
+        class="form-control"
+        id="categoryImageView"
+        name="categoryImageView"
+        (change)="onFileSelected($event)"
+      />
+      <img [src]="url" width="200" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu</button>
+  </form>
+</div>

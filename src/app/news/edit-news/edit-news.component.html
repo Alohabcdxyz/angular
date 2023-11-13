@@ -1,0 +1,62 @@
+<div class="container">
+  <form #form="ngForm" (ngSubmit)="updateNews()">
+    <div class="mb-3">
+      <label for="Id" class="form-label">Mã bài viết</label>
+      <input
+        type="text"
+        class="form-control"
+        id="id"
+        name="id"
+        readonly
+        [(ngModel)]="newsDetail.id"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="title" class="form-label">Tiêu đề bài viết</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        [(ngModel)]="newsDetail.title"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="thumbnailImage" class="form-label">Ảnh Thumbnail</label>
+      <input
+        type="file"
+        class="form-control"
+        id="thumbnailImage"
+        name="thumbnailImage"
+        (change)="onFileSelected($event)"
+      />
+      <div class="row">
+        <div class="col-3">
+          <h4>Thumbnail hiện tại</h4>
+          <img
+            style="width: 100%"
+            src="{{ 'data:image/jpg;base64,' + newsDetail.thumbnail }}"
+          />
+        </div>
+        <div class="col-3">
+          <h4>Thumbnail mới (Nếu có)</h4>
+          <img [src]="url" width="100%" />
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="detail" class="form-label">Nội dung bài viết</label>
+      <angular-editor
+        [placeholder]="'Nhập nội dung tại đây'"
+        [(ngModel)]="newsDetail.detail"
+        name="detail"
+        [config]="editorConfig"
+      ></angular-editor>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>{{ " " }}
+  </form>
+  <br />
+  <button type="submit" class="btn btn-primary">
+    <a style="color: white" routerLink="/news">Quay lại</a>
+  </button>
+</div>

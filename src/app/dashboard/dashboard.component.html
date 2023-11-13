@@ -1,0 +1,94 @@
+<div class="col-sm-6" style="margin-bottom: 20px">
+  <h1 class="m-0">Thống kê</h1>
+</div>
+<section class="content">
+  <div class="container-fluid">
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+          <div class="inner">
+            <h3>{{ categoryCount }}</h3>
+
+            <p>Danh Mục</p>
+          </div>
+          <div class="icon">
+            <i class="fa-solid fa-utensils"></i>
+          </div>
+          <a routerLink="/category" class="small-box-footer"
+            >Xem Thêm <i class="fas fa-arrow-circle-right"></i
+          ></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+          <div class="inner">
+            <h3>{{ productCount }}</h3>
+
+            <p>Sản Phẩm</p>
+          </div>
+          <div class="icon">
+            <i class="fa-solid fa-burger"></i>
+          </div>
+          <a routerLink="/product" class="small-box-footer"
+            >Xem Thêm <i class="fas fa-arrow-circle-right"></i
+          ></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-warning">
+          <div class="inner">
+            <h3>44</h3>
+
+            <p>Đơn Hàng</p>
+          </div>
+          <div class="icon">
+            <i class="fa-brands fa-shopify"></i>
+          </div>
+          <a routerLink="/order" class="small-box-footer"
+            >Xem Thêm <i class="fas fa-arrow-circle-right"></i
+          ></a>
+        </div>
+      </div>
+      <!-- ./col -->
+      <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-danger">
+          <div class="inner">
+            <h3>65</h3>
+
+            <p>Unique Visitors</p>
+          </div>
+          <div class="icon">
+            <img
+              src="../../assets/image/menu.svg"
+              style="
+                color: rgba(0, 0, 0, 0.15);
+                font-size: 90px;
+                position: absolute;
+                right: 15px;
+                top: 15px;
+                transition: all 0.3s linear;
+                width: 70px;
+              "
+            />
+          </div>
+          <a href="#" class="small-box-footer"
+            >More info <i class="fas fa-arrow-circle-right"></i
+          ></a>
+        </div>
+      </div>
+      <!-- ./col -->
+    </div>
+    <!-- /.row -->
+    <!-- Main row -->
+    <div class="row"></div>
+    <!-- /.row (main row) -->
+  </div>
+  <!-- /.container-fluid -->
+</section>

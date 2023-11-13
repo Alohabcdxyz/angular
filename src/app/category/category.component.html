@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="search-hero">
+    <input
+      type="text"
+      name="search"
+      [(ngModel)]="searchText"
+      class="mb-3"
+      style="
+        border-radius: 10px;
+        outline: none;
+        border: none;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      "
+      placeholder="Tìm kiếm danh mục"
+    />
+  </div>
+  <table
+    class="table table-bordered center-text"
+    *ngIf="category && category.length > 0"
+  >
+    <thead>
+      <tr>
+        <th scope="col">Mã danh mục</th>
+        <th scope="col">Tên danh mục</th>
+        <th scope="col">Ảnh danh mục</th>
+        <th scope="col">Lựa chọn</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of category | search : searchText">
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>
+          <img
+            style="height: 100px"
+            src="{{ 'data:image/jpg;base64,' + item.categoryImage }}"
+          />
+        </td>
+
+        <td style="text-align: center; vertical-align: middle">
+          <a routerLink="/category/edit/{{ item.id }}">
+            <img style="height: 30px" src="../../assets/image/edit.svg" />
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="!category || category.length <= 0" class="text-center">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+</div>

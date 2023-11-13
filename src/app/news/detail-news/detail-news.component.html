@@ -1,0 +1,28 @@
+<input
+  type="text"
+  class="form-control"
+  id="id"
+  name="id"
+  hidden
+  [(ngModel)]="newsDetail.id"
+/>
+
+<div class="row">
+  <div class="col-3">
+    <h3>Ảnh title</h3>
+    <img
+      style="width: 100%"
+      src="{{ 'data:image/jpg;base64,' + newsDetail.thumbnail }}"
+    />
+  </div>
+  <div class="col-1"></div>
+  <div class="col-8">
+    <h3>Thông tin</h3>
+    <div [innerHtml]="getSanitizedDetail()" style="width: 100%">
+      <!-- {{ newsDetail.detail}} -->
+    </div>
+  </div>
+  <button>
+    <a routerLink="/news">Quay lại</a>
+  </button>
+</div>

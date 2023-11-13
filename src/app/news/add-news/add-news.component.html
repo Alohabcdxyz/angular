@@ -1,0 +1,38 @@
+<div class="container">
+  <form #form="ngForm" (ngSubmit)="addNews()" enctype="multipart/form-data">
+    <div class="mb-3">
+      <label for="title" class="form-label">Tiêu đề bài viết</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        name="title"
+        [(ngModel)]="addNewsRequest.title"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="thumbnailImage" class="form-label">Ảnh Thumbnail</label>
+      <input
+        type="file"
+        class="form-control"
+        id="thumbnailImage"
+        name="thumbnailImage"
+        (change)="onFileSelected($event)"
+      />
+      <img [src]="url" height="200" />
+    </div>
+
+    <div class="mb-3">
+      <label for="detail" class="form-label">Nội dung bài viết</label>
+      <angular-editor
+        [placeholder]="'Nhập nội dung tại đây'"
+        [(ngModel)]="addNewsRequest.detail"
+        name="detail"
+        [config]="editorConfig"
+      ></angular-editor>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lưu</button>
+  </form>
+</div>

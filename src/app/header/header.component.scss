@@ -1,0 +1,19 @@
+.nav-header{
+    border: 1px solid red;
+    padding: 0 150px;
+
+    img{
+        height: 67px;
+    }
+    .nav-menu{
+        margin-left: 40px;
+        .nav-item-a{
+            color: #142f43;
+            text-transform: uppercase;
+            position: relative;
+            display: block;
+            font-weight: 700;
+            border-bottom: 1px solid black;
+        }
+    }
+}

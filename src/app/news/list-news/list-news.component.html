@@ -1,0 +1,75 @@
+<div class="container">
+  <table
+    class="table table-bordered center-text"
+    *ngIf="news && news.length > 0"
+  >
+    <thead>
+      <tr>
+        <th scope="col">Mã bài viết</th>
+        <th scope="col">Tiêu đề</th>
+        <th scope="col">Ảnh thumbnail</th>
+        <th scope="col">Lựa chọn</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let item of news
+            | paginate
+              : {
+                  itemsPerPage: tableSize,
+                  currentPage: page,
+                  totalItems: count
+                };
+          let i = index
+        "
+      >
+        <td>{{ item.id }}</td>
+        <td>{{ item.title }}</td>
+        <td>
+          <img
+            style="height: 100px"
+            src="{{ 'data:image/jpg;base64,' + item.thumbnail }}"
+          />
+        </td>
+
+        <td style="text-align: center; vertical-align: middle">
+          <a routerLink="/news/edit/{{ item.id }}">
+            <img style="height: 30px" src="../../../assets/image/edit.svg" />
+          </a>
+          {{ " " }}
+          <button
+            style="border: none; outline: none; background: white"
+            (click)="deleteNews(item.id)"
+          >
+            <img
+              style="height: 30px"
+              src="../../../assets/image/trash-can-svgrepo-com.svg"
+            />
+          </button>
+          {{ " " }}
+          <a routerLink="/news/detail/{{ item.id }}">
+            <img
+              style="height: 30px"
+              src="../../../assets/image/magnifying-glass-search-svgrepo-com.svg"
+            />
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)"
+    ></pagination-controls>
+  </div>
+  <div *ngIf="!news || news.length <= 0" class="text-center">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
+</div>

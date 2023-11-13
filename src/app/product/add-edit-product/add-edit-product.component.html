@@ -1,0 +1,99 @@
+<form>
+  <div class="mb-3">
+    <label for="name" class="form-label"> Tên sản phẩm </label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="name"
+      name="name"
+      placeholder="Nhập tên sản phẩm"
+    />
+  </div>
+  <div class="mb-3">
+    <label id="categoryId" class="form-label"> Danh mục </label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="categoryId"
+      *ngIf="product.id != 0"
+      disabled
+    />
+    <select
+      class="form-select"
+      name="categoryId"
+      id="categoryId"
+      [(ngModel)]="categoryId"
+      *ngIf="product.id === 0"
+    >
+      <option *ngFor="let type of categoryList$ | async" [value]="type.id">
+        {{ type.name }}
+      </option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <label for="infor" class="form-label"> Thông tin sản phẩm </label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="infor"
+      name="infor"
+      placeholder="Nhập thông tin"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="infor" class="form-label"> Màu sắc </label>
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="color"
+      name="color"
+      placeholder="Nhập màu"
+    />
+  </div>
+  <div class="mb-1">
+    <label for="quantity" class="form-label"> Số lượng sản phẩm </label>
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="quantity"
+      name="quantity"
+      placeholder="Nhập số lượng bán"
+    />
+  </div>
+  <div class="mb-1">
+    <label for="price" class="form-label"> Giá bán sản phẩm </label>
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="price"
+      name="price"
+      placeholder="Nhập giá bán"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="productImage" class="form-label">Ảnh sản phẩm</label>
+    <input
+      type="file"
+      class="form-control"
+      id="productImage"
+      name="productImage"
+      (change)="onImageChange($event)"
+    />
+  </div>
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="updateProduct()"
+    *ngIf="product.id != 0"
+  >
+    Update
+  </button>
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="addProduct()"
+    *ngIf="product.id == 0"
+  >
+    Save
+  </button>
+</form>

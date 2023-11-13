@@ -1,0 +1,162 @@
+<div class="row body-card">
+  <div class="card">
+    <div class="card-text">
+      <!-- <h3>Chỉnh sửa thông tin</h3> -->
+      <div class="portada"></div>
+      <div class="container" style="margin-left: 110px">
+        <form #form="ngForm" (ngSubmit)="updateUser()">
+          <div class="mb-3">
+            <label for="userId" class="form-label">Mã người dùng</label>
+            <input
+              type="text"
+              class="form-control"
+              id="userId"
+              name="userId"
+              readonly
+              [(ngModel)]="usesrDetail.userId"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="userName" class="form-label">Tên người dùng</label>
+            <input
+              type="text"
+              class="form-control"
+              id="userName"
+              name="userName"
+              [(ngModel)]="usesrDetail.userName"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input
+              type="text"
+              class="form-control"
+              id="email"
+              name="email"
+              [(ngModel)]="usesrDetail.email"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Mật khẩu</label>
+            <input
+              type="text"
+              class="form-control"
+              id="password"
+              name="password"
+              [type]="type"
+              [(ngModel)]="usesrDetail.password"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="confirmPassword" class="form-label"
+              >Xác nhận lại mật khẩu</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="confirmPassword"
+              name="confirmPassword"
+              [type]="type"
+              [(ngModel)]="usesrDetail.confirmPassword"
+            />
+            <span (click)="hideShowPass()" class="{{ eyeIcon }}"></span>
+          </div>
+          <div class="mb-3">
+            <label for="role" class="form-label">Chức danh</label>
+            <input
+              type="text"
+              class="form-control"
+              id="role"
+              name="role"
+              readonly
+              [value]="usesrDetail.role === 2 ? 'Admin' : 'User'"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Lưu thông tin</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="row body-card">
+  <div class="card">
+    <div class="card-text">
+      <div class="title-total">
+        <h3>Chỉnh sửa thông tin</h3>
+        <div class="container">
+          <form #form="ngForm" (ngSubmit)="updateUser()">
+            <div class="mb-3">
+              <label for="userId" class="form-label">Mã người dùng</label>
+              <input
+                type="text"
+                class="form-control"
+                id="userId"
+                name="userId"
+                readonly
+                [(ngModel)]="usesrDetail.userId"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="userName" class="form-label">Tên người dùng</label>
+              <input
+                type="text"
+                class="form-control"
+                id="userName"
+                name="userName"
+                [(ngModel)]="usesrDetail.userName"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input
+                type="text"
+                class="form-control"
+                id="email"
+                name="email"
+                [(ngModel)]="usesrDetail.email"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Mật khẩu</label>
+              <input
+                type="text"
+                class="form-control"
+                id="password"
+                name="password"
+                [type]="type"
+                [(ngModel)]="usesrDetail.password"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="confirmPassword" class="form-label"
+                >Xác nhận lại mật khẩu</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="confirmPassword"
+                name="confirmPassword"
+                [type]="type"
+                [(ngModel)]="usesrDetail.confirmPassword"
+              />
+              <span (click)="hideShowPass()" class="{{ eyeIcon }}"></span>
+            </div>
+            <div class="mb-3">
+              <label for="role" class="form-label">Chức danh</label>
+              <input
+                type="text"
+                class="form-control"
+                id="role"
+                name="role"
+                readonly
+                [value]="usesrDetail.role === 2 ? 'Admin' : 'User'"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary">Lưu thông tin</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

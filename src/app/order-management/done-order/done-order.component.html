@@ -1,0 +1,194 @@
+<h1>Danh sách đơn hàng</h1>
+<div *ngIf="bills$ | async as bills">
+  <div class="order-container" *ngFor="let bill of bills$ | async">
+    <div *ngIf="bill.status === 2">
+      <table class="table table-borderless">
+        <thead>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><div class="id-bill">Mã đơn hàng:</div></th>
+            <td>
+              {{ bill.id }}
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <th><div class="status">Trạng thái đơn hàng:</div></th>
+            <td>
+              <div
+                [ngStyle]="getStatusStyle(bill.status)"
+                style="display: inline-block"
+              >
+                {{ getStatusText(bill.status) }}
+              </div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <th><div class="status">Người nhận:</div></th>
+
+            <td>
+              <div>{{ bill.register?.userName }}</div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+
+          <tr>
+            <th><div class="status">Tổng thu:</div></th>
+            <td>
+              <div class="money">{{ bill.total | currency : "VND" }}</div>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="product-infor">
+        <h2>Danh sách sản phẩm</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Sản phẩm</th>
+              <th>Ảnh sản phẩm</th>
+              <th>Giá</th>
+              <th>Số lượng</th>
+              <th>Tổng tiền</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let billDetail of bill.billDetails">
+              <td>{{ billDetail.product.name }}</td>
+              <td>
+                <img
+                  style="height: 100px"
+                  src="{{
+                    'data:image/jpg;base64,' + billDetail.product.productString
+                  }}"
+                />
+              </td>
+              <td class="money">
+                {{ billDetail.product.price | currency : "VND" }}
+              </td>
+              <td>{{ billDetail.quantity }}</td>
+              <td class="money">
+                {{
+                  billDetail.quantity * billDetail.product.price
+                    | currency : "VND"
+                }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!bills$" class="text-center">
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
